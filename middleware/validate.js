@@ -1,5 +1,5 @@
 const {userValidationSchema ,noteValidationSchema, passwordValidationSchema } = require('../schema.js');
-const ExpressError = require('../utils/Expresserror.js');
+const ExpressError = require('../utils/ExpressError.js');
 
 const validate = (schema) => {
   return (req, res, next) => {
