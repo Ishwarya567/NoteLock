@@ -1,0 +1,23 @@
+<% layout("layouts/boilerplate.ejs")%>
+
+<section class="recent-items">
+    <h2 class="offset-5 show-notes-h2"> Notes</h2>
+    <div class="card-deck show-notes">
+        <% notes.forEach(note => { %>
+            <div class="card notes-card">
+                <div class="card-title">
+                    <h5>Title:<%= note.title.toUpperCase()%></h5>
+                    <p><i>at: <%= note.date.toDateString()%></i></p>
+                            <hr>
+                </div>
+                <div class="card-body">
+                <div class="card-text">
+                   <p><%= note.content %></p>
+                </div>
+                </div>
+                <a href="/notes/<%= note._id%>" class="btn btn-secondary col-6 offset-3 mt-1 view-btn">ViewNote</a>
+            </div>
+
+        <% }); %>
+    </div>
+</section>

@@ -1,0 +1,113 @@
+<% layout("layouts/boilerplate.ejs")%>
+<body>
+    <main>
+        <div class="head">
+        <div class="head-blur">]
+        <section class="welcome">
+            <h1>Welcome to NoteLock</h1>
+            <p>Your secure platform for managing notes and passwords<br>
+            NoteLock offers robust encryption techniques to safeguard<br>
+            personal information, ensuring user confidentiality and peace of mind.
+            <br>NoteLock offers a  secure platform for managing your sensitive notes and passwords, 
+            <br>ensuring your data is always protected and easily accessible.
+        </p>
+
+        </section>
+        <section class="quick-access">
+            <h1>Get Started!</h1>
+            <p>Add Your Notes and Passwords here Right away!</p>
+            <a href="/notes" class="btn homebtn">Add New Note</a>
+            <a href="/passwords" class="btn homebtn">Add New Password</a>
+        </section>
+    </div>
+</div>
+<div class=head2>
+<section class="welcome2">
+    <h2>Why Choose NoteLock?</h2>
+    <div class="card-deck2">
+        <div class="card home-card">
+            <div class="card-title">
+                <h5><i>Robust Security</i></h5>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                   <li> End-to-End Encryption</li>
+                    <li>Secure Authentication</li>
+                </div>
+            </div>
+        </div>
+        <div class="card home-card">
+            <div class="card-title">
+               <h5><i> User-Friendly Interface</i></h5>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                   <li>Intuitive Design </li>
+                    <li>Cross-Platform Access</li>
+                </div>
+            </div>
+        </div>
+        <div class="card home-card">
+            <div class="card-title">
+               <h5><i>Organize and Manage Effortlessly</i></h5> 
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                   <li>Categorize Notes</li>
+                    <li>Password Management</li>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        <section class="recent-items">  
+            <% if(notes && notes.length>0){%>
+            <h2>Recent Notes</h2>
+            <div class="card-deck">
+                <% notes.forEach(note => { %>
+                    <div class="card notes-card">
+                        <div class="card-title">
+                            <h5>Title:<%= note.title.toUpperCase()%></h5>
+                            <p><i>at: <%= note.date.toDateString()%></i></p>
+                            <hr>
+                        </div>
+                        <div class="card-body">
+                        <div class="card-text">
+                            <p><%= note.content %></p>
+                        </div>
+                        </div>
+                        <a href="/notes/<%= note._id%>" class="btn btn-secondary col-6 offset-3 mt-1 view-btn">ViewNote</a>
+                    </div>
+    
+                <% }); %>
+            </div>
+        <%}%>
+        </section>
+
+        <section class="recent-items passwords">
+            <% if(passwords && passwords.length>0){%>
+            <h2>Recent passwords</h2>
+            <div class="card-deck">
+                <% passwords.forEach(password => { %>
+                    <div class="card notes-card">
+                        <div class="card-title">
+                           <h5> Title:<%= password.title%></h5>
+                            <p><i>at: <%= password.date.toDateString()%></i></p>
+                            <hr>
+                        </div>
+                        <div class="card-body">
+                        <div class="card-text">
+                            <p><%= password.site%></p>
+                        </div>
+                        </div>
+                        <a href="/passwords/<%= password._id%>" class="btn btn-secondary col-8 offset-2 mt-1 view-btn">ViewPassword</a>
+                    </div>
+    
+                <% }); %>
+            </div>
+        <%}%>
+        </section>
+    </main>
+</body>
